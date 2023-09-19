@@ -1,0 +1,40 @@
+<div class="profile-sidebar">
+  <div class="profile-sidebar__avatar">
+    <input
+      type="file"
+      #fileInput
+      class="image-upload-field"
+      (change)="onFileChange($event)"
+      accept="image/*">
+
+    <img [src]="tempImage || profileImage" alt="R" (click)="fileInput.click()">
+  </div>
+
+  <div *ngIf="tempImage" class="buttons-wrapper">
+    <button class="btn save" (click)="uploadImage()">Save</button>
+    <button class="btn cancel" (click)="cancelImage()">Cancel</button>
+  </div>
+
+  <div class="sections">
+    <button
+      class="section"
+      [class.selected]="selectedSection === ProfileNavigation.ACCOUNT"
+      (click)="selectSection(ProfileNavigation.ACCOUNT)">
+      Account
+    </button>
+
+    <button
+      class="section"
+      [class.selected]="selectedSection === ProfileNavigation.DECKS"
+      (click)="selectSection(ProfileNavigation.DECKS)">
+      Decks
+    </button>
+
+    <button
+      class="section"
+      [class.selected]="selectedSection === ProfileNavigation.CARDS"
+      (click)="selectSection(ProfileNavigation.CARDS)">
+      Cards
+    </button>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+@import '../../../../assets/styles/variables.scss';
+
+.filter-btn {
+  background: none;
+  color: $color-primary-contrast;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  border: none;
+  letter-spacing: 0.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filters {
+  color: $color-primary-contrast;
+  margin: 0.8rem;
+  padding: 0.8rem;
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  .searchbar {
+    border: none;
+    border-radius: 2rem;
+    padding: 0.6rem 0.6rem;
+    font-size: 1.2rem;
+    width: 40%;
+    margin-bottom: 0.8rem;
+
+    &:focus {
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+    }
+  }
+
+  .fieldset-label {
+    font-size: 1.2rem;
+  }
+
+  .filters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    .attack-wrapper, .defence-wrapper {
+      display: flex;
+      align-items: end;
+
+      span {
+        font-size: 2rem;
+        margin: 0.2rem;
+      }
+
+      .boundary-field {
+        width: 4rem;
+        padding: 0.4rem;
+        border-radius: 0.2rem;
+      }
+    }
+
+    .btn-wrapper {
+      .filter-btn {
+        @include form-btn;
+        color: white;
+        font-weight: bold;
+        margin: 0.2rem;
+      }
+    }
+  }
+}

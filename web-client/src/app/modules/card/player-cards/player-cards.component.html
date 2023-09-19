@@ -1,0 +1,33 @@
+<section
+  class="player-cards"
+  recScrollTracker
+  (scrolledDown)="filterService.loadNextItems(getCards.bind(this))">
+
+  <button (click)="isFilterVisible = !isFilterVisible" class="filter-btn">
+    <span class="material-symbols-outlined">
+      filter_alt
+    </span>
+
+    <span>Filter</span>
+  </button>
+
+  <rec-card-filter
+    *ngIf="isFilterVisible"
+    [formGroup]="filterService.filtersForm"
+    (applyFilters)="filterService.applyFilters(getCards.bind(this))"
+    (clearFilters)="filterService.clearFilters(getCards.bind(this))">
+
+    <div class="field-wrapper">
+      <label for="availability">Availability</label>
+
+      <select id="availability" formControlName="availability">
+        <option [value]="null">All</option>
+        <option [value]="CardAvailability.AVAILABLE">Available</option>
+        <option [value]="CardAvailability.UNAVAILABLE">In decks</option>
+      </select>
+    </div>
+  </rec-card-filter>
+
+  <rec-cards-list [cardsList]="filterService.itemList"></rec-cards-list>
+</section>
+

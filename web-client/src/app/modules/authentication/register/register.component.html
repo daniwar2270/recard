@@ -1,0 +1,165 @@
+<section class="register-wrapper">
+  <form class="register-form" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <rec-loader *ngIf="isLoading"></rec-loader>
+
+    <h2 class="register-form__title">Register</h2>
+
+    <div class="register-form__row">
+      <div class="input-wrapper">
+        <input
+          id="first-name"
+          type="text"
+          placeholder="first name *"
+          formControlName="firstName">
+
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'firstName', 'required')">
+            {{ requiredMessage }}
+        </span>
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'firstName', 'validation')">
+            {{ firstNameMessage }}
+        </span>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          id="last-name"
+          type="text"
+          placeholder="last name *"
+          formControlName="lastName">
+
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'lastName', 'required')">
+            {{ requiredMessage }}
+        </span>
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'lastName', 'validation')">
+            {{ lastNameMessage }}
+        </span>
+      </div>
+    </div>
+
+    <input
+      id="username"
+      type="text"
+      placeholder="username *"
+      formControlName="username">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(registerForm, 'username', 'required')">
+        {{ requiredMessage }}
+    </span>
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(registerForm, 'username', 'validation')">
+        {{ usernameMessage }}
+    </span>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="email *"
+      formControlName="email">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(registerForm, 'email', 'required')">
+        {{ requiredMessage }}
+    </span>
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(registerForm, 'email', 'validation')">
+        {{ emailMessage }}
+    </span>
+
+    <input
+      id="born-on"
+      type="date"
+      placeholder="born on *"
+      formControlName="bornOn"
+      [max]="maxDate"
+      [min]="minDate">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(registerForm, 'bornOn', 'required')">
+        {{ requiredMessage }}
+    </span>
+    <span
+      class="error-msg"
+      *ngIf="validationService.validateDateRange(registerForm, 'bornOn', minDate, maxDate)">
+        {{ bornOnMessage }}
+    </span>
+
+    <div class="register-form__row">
+      <div class="input-wrapper">
+        <div class="password-wrapper">
+          <input
+            id="password"
+            type="{{ this.isPasswordVisible ? 'text' : 'password' }}"
+            placeholder="password *"
+            class="register-form__input"
+            formControlName="password">
+
+          <span
+            class="material-symbols-outlined visibility"
+            (click)="isPasswordVisible=!isPasswordVisible">
+              {{ this.isPasswordVisible ? 'visibility' : 'visibility_off' }}
+          </span>
+        </div>
+
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'password', 'required')">
+            {{ requiredMessage }}
+        </span>
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'password', 'validation')">
+            {{ passwordMessages.PASSWORD_INVALID_FORMAT }}
+        </span>
+      </div>
+
+      <div class="input-wrapper">
+        <div class="password-wrapper">
+          <input
+            id="confirm-password"
+            type="{{ this.isConfirmPasswordVisible ? 'text' : 'password' }}"
+            placeholder="confirm password *"
+            class="register-form__input"
+            formControlName="confirm">
+
+          <span
+            class="material-symbols-outlined visibility"
+            (click)="isConfirmPasswordVisible=!isConfirmPasswordVisible">
+              {{ this.isConfirmPasswordVisible ? 'visibility' : 'visibility_off' }}
+          </span>
+        </div>
+
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkValidations(registerForm, 'confirm', 'required')">
+            {{ requiredMessage }}
+        </span>
+        <span
+          class="error-msg"
+          *ngIf="validationService.checkPasswordsMatch(registerForm)">
+            {{ passwordMessages.PASSWORDS_DONT_MATCH }}
+        </span>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="register-form__submit"
+      [disabled]="!this.isValidForm()">
+        Register
+    </button>
+  </form>
+</section>

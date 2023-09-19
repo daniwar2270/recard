@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/variables.scss';
+
+footer {
+  background-color: $color-footer-header;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .logo {
+    width: 12rem;
+
+    @media (max-width: $w-mobile-l) {
+      width: 8rem;
+    }
+  }
+
+  .credits {
+    font-size: 1.4rem;
+    color: $color-primary-contrast;
+  }
+
+  @media (max-width: $w-mobile-l) {
+    flex-direction: column;
+  }
+}

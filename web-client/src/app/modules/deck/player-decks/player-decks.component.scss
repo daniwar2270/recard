@@ -1,0 +1,51 @@
+@import '../../../../assets/styles/variables.scss';
+
+$card-width: calc(22rem / 3);
+$card-height: calc(34rem / 3);
+
+.player-decks {
+  rec-loader {
+    scale: 0.8;
+    margin: 20% auto;
+  }
+
+  .page-title {
+    @include title;
+  }
+
+  .decks-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .deck {
+      margin: auto 2rem;
+      transition: all 0.6s;
+
+      .deck-name {
+        color: $color-primary-contrast;
+        font-size: 1.2rem;
+        margin-top: 1.02rem;
+        text-align: center;
+      }
+
+      .deck-image {
+        @include card;
+        margin: 1.2rem;
+        display: flex;
+        align-items: center;
+        background-color: $color-secondary;
+        box-shadow: none;
+
+        img {
+          width: 100%;
+          height: 90%;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+  }
+}

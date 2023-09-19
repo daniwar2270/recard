@@ -1,0 +1,46 @@
+<section class="login-wrapper">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <rec-loader *ngIf="isLoading"></rec-loader>
+
+    <h2 class="login-form__title">Login</h2>
+
+    <input
+      id="username"
+      type="text"
+      placeholder="username *"
+      class="login-form__input"
+      formControlName="username">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(loginForm, 'username', 'required')">
+        {{ requiredMessage }}
+    </span>
+
+    <div class="password-wrapper">
+      <input
+        id="password"
+        type="{{ this.isPasswordVisible ? 'text' : 'password' }}"
+        placeholder="password *"
+        class="login-form__input"
+        formControlName="password">
+
+      <span class="material-symbols-outlined visibility" (click)="isPasswordVisible=!isPasswordVisible">
+        {{ this.isPasswordVisible ? 'visibility' : 'visibility_off' }}
+      </span>
+    </div>
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(loginForm, 'password', 'required')">
+        {{ requiredMessage }}
+    </span>
+
+    <button
+      type="submit"
+      class="login-form__submit"
+      [disabled]="loginForm.invalid">
+        Login
+    </button>
+  </form>
+</section>

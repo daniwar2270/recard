@@ -1,0 +1,23 @@
+<section
+  class="cards-page"
+  recScrollTracker
+  (scrolledDown)="filterService.loadNextItems(getCards.bind(this))">
+
+  <h1 class="title">Cards</h1>
+
+  <button (click)="isFilterVisible = !isFilterVisible" class="filter-btn">
+    <span class="material-symbols-outlined">
+      filter_alt
+    </span>
+
+    <span>Filter</span>
+  </button>
+
+  <rec-card-filter
+    *ngIf="isFilterVisible"
+    (applyFilters)="filterService.applyFilters(getCards.bind(this))"
+    (clearFilters)="filterService.clearFilters(getCards.bind(this))">
+  </rec-card-filter>
+
+  <rec-cards-list [cardsList]="filterService.itemList"></rec-cards-list>
+</section>

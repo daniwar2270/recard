@@ -1,0 +1,7 @@
+<div class="cards-list">
+  <rec-card
+    *ngFor="let card of cardsList"
+    [cardInformation]="card"
+    id="{{ card.id }}">
+  </rec-card>
+</div>

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: filemanager-server
+    ports:
+      - "80:80"
+    volumes:
+      - ../images:/images
+      - ./filemanager.conf:/etc/nginx/nginx.conf
+
+  globalnginx:
+    image: nginx:latest
+    container_name: global-nginx
+    ports:
+      - "9090:9090"
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./proxy_headers.conf:/etc/nginx/proxy_headers.conf
+
+networks:
+  default:
+    name: recard
+    external: true

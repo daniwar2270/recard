@@ -1,0 +1,77 @@
+<form class="filters" [formGroup]="filtersForm" (ngSubmit)="submitFilters()">
+  <input
+    class="searchbar"
+    type="text"
+    id="card-name"
+    placeholder="Card name..."
+    formControlName="name">
+
+  <div class="filters-wrapper">
+    <div>
+      <label class="fieldset-label">Defence</label>
+
+      <fieldset class="defence-wrapper">
+        <div class="field-wrapper">
+          <input
+            type="number"
+            id="defence-min"
+            class="boundary-field"
+            min="{{ Card.MIN_DEFENCE }}"
+            max="{{ Card.MAX_DEFENCE }}"
+            placeholder="Min"
+            formControlName="minDef">
+        </div>
+
+        <span> - </span>
+
+        <div class="field-wrapper">
+          <input
+            type="number"
+            id="defence-max"
+            class="boundary-field"
+            min="{{ Card.MIN_DEFENCE }}"
+            max="{{ Card.MAX_DEFENCE }}"
+            placeholder="Max"
+            formControlName="maxDef">
+        </div>
+      </fieldset>
+    </div>
+
+    <div>
+      <label class="fieldset-label">Attack</label>
+
+      <fieldset class="attack-wrapper">
+        <div class="field-wrapper">
+          <input
+            type="number"
+            id="attack-min"
+            class="boundary-field"
+            min="{{ Card.MIN_ATTACK }}"
+            max="{{ Card.MAX_ATTACK }}"
+            placeholder="Min"
+            formControlName="minAttack">
+        </div>
+
+        <span> - </span>
+
+        <div class="field-wrapper">
+          <input
+            type="number"
+            id="attack-max"
+            class="boundary-field"
+            min="{{ Card.MIN_ATTACK }}"
+            max="{{ Card.MAX_ATTACK }}"
+            placeholder="Max"
+            formControlName="maxAttack">
+        </div>
+      </fieldset>
+    </div>
+
+    <ng-content></ng-content>
+
+    <div class="btn-wrapper">
+      <button type="submit" class="filter-btn">Filter</button>
+      <button class="filter-btn" (click)="resetFilters()">Clear filters</button>
+    </div>
+  </div>
+</form>

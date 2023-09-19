@@ -1,0 +1,91 @@
+@import '../../../../assets/styles/variables.scss';
+
+header {
+  background-color: $color-footer-header;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+
+  .menu-btn {
+    display: none;
+    background-color: transparent;
+    color: $color-primary-contrast;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media (max-width: $w-tablet) {
+      display: block;
+    }
+  }
+
+  .logout-btn {
+    background-color: transparent;
+    color: $color-primary-contrast;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .nav {
+    display: flex;
+    font-size: 1.4rem;
+    justify-content: space-between;
+
+    &__list {
+      display: flex;
+      box-sizing: border-box;
+
+      li{
+        display: flex;
+      }
+
+      .link {
+        display: block;
+        padding: 0.6rem;
+        color: $color-primary-contrast;
+        text-decoration: none;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.active {
+          background-color: $color-secondary;
+        }
+      }
+    }
+
+    @media (max-width: $w-tablet), (max-height: $w-mobile-l) {
+      font-size: 0.8rem;
+      background-color: $color-footer-header;
+      position: absolute;
+      flex-direction: column;
+      height: 100vh;
+      z-index: 0.8;
+      @include shadow-dark-bg;
+
+      ul {
+        margin: 0;
+
+        a {
+          width: 100%;
+        }
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &__list {
+        flex-direction: column;
+        margin: auto;
+      }
+    }
+  }
+}

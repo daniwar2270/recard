@@ -1,0 +1,119 @@
+<section *ngIf="!editMode">
+  <h2>Account</h2>
+
+  <div class="profile-info">
+    <div class="profile-info__row">
+      <div class="wrapper">
+        <h5>First name</h5>
+        <p>{{ profileInformation.firstName }}</p>
+      </div>
+
+      <div class="wrapper">
+        <h5>Last name</h5>
+        <p>{{ profileInformation.lastName }}</p>
+      </div>
+    </div>
+
+    <div class="profile-info__row">
+      <div class="wrapper">
+        <h5>Username</h5>
+        <p>{{ profileInformation.username }}</p>
+      </div>
+
+      <div class="wrapper">
+        <h5>Email</h5>
+        <p>{{ profileInformation.email }}</p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <h5>Birth date</h5>
+      <p>{{ profileInformation.bornOn | date }}</p>
+    </div>
+  </div>
+
+  <button class="edit" *ngIf="!editMode" (click)="switchEditMode()">
+    Edit
+  </button>
+
+</section>
+
+<form class="account-form" [formGroup]="editProfileForm" *ngIf="editMode" (ngSubmit)="saveUserData()">
+  <h2>Edit Account</h2>
+
+  <div class="input-wrapper">
+    <label for="first-name">First Name</label>
+    <input
+      id="first-name"
+      type="text"
+      placeholder="first name *"
+      class="input-field"
+      formControlName="firstName">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(editProfileForm, 'firstName', 'required')">
+       {{ requiredMessage }}
+    </span>
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(editProfileForm, 'firstName', 'validation')">
+        {{ firstNameMessage }}
+    </span>
+  </div>
+
+  <div class="input-wrapper">
+    <label for="last-name">Last Name</label>
+    <input
+      id="last-name"
+      type="text"
+      placeholder="last name *"
+      class="input-field"
+      formControlName="lastName">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(editProfileForm, 'lastName', 'required')">
+        {{ requiredMessage }}
+    </span>
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(editProfileForm, 'lastName', 'validation')">
+       {{ lastNameMessage }}
+    </span>
+  </div>
+
+  <div class="input-wrapper">
+    <label for="birth-date">Birth Date</label>
+    <input
+      id="birth-date"
+      type="date"
+      class="input-field"
+      formControlName="bornOn"
+      [max]="maxDate"
+      [min]="minDate">
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(editProfileForm, 'bornOn', 'required')">
+        {{ requiredMessage }}
+    </span>
+  </div>
+
+  <div class="btn-group">
+    <button
+      class="save"
+      *ngIf="editMode"
+      type="submit"
+      [disabled]="editProfileForm.invalid || isFormEmpty()">
+        Save
+    </button>
+
+    <button
+      class="cancel"
+      *ngIf="editMode"
+      (click)="switchEditMode()">
+        Cancel
+    </button>
+  </div>
+</form>

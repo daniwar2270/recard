@@ -1,0 +1,40 @@
+@import '../../../assets/styles/variables';
+
+@include loader-full-page;
+
+.profile-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  .profile {
+    @include modal-window;
+    @include shadow-dark-bg;
+    box-sizing: border-box;
+    width: 80%;
+    height: 86%;
+  }
+
+  .sidebar {
+    @include modal-window;
+    @include shadow-dark-bg;
+    box-sizing: border-box;
+    padding: 0;
+    width: 16%;
+    height: 86%;
+  }
+
+  @media screen and (max-height: $w-mobile-l) {
+    padding: 2rem 1rem;
+    align-items: normal;
+    overflow: auto;
+
+    .sidebar, .profile {
+      min-height: 100%;
+      height: fit-content;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<section class="deck-data">
+  <button (click)="goBack()" class="go-back-btn">
+    <span class="material-symbols-outlined">
+      arrow_back
+    </span>
+    <span>
+      Back
+    </span>
+  </button>
+
+  <section class="deck-info" recScrollTracker>
+    <div class="input-wrapper" [formGroup]="changeNameForm">
+      <input
+        formControlName="name"
+        class="deck-name"
+        [ngClass]="isReadOnly ? 'readonly' : 'edit-mode'"
+        type="text"
+        [readonly]="isReadOnly"
+        [defaultValue]="deck.name"/>
+
+      <span
+        (click)="isReadOnly=false"
+        *ngIf="isReadOnly"
+        class="material-symbols-outlined">
+          edit
+      </span>
+
+      <span
+        *ngIf="!isReadOnly"
+        (click)="clearForm()"
+        class="material-symbols-outlined close">
+          close
+      </span>
+
+      <span
+        (click)="changeDeckName()"
+        *ngIf="!isReadOnly"
+        class="material-symbols-outlined save">
+          done
+      </span>
+    </div>
+
+    <span
+      class="error-msg"
+      *ngIf="!isReadOnly && validationService.checkValidations(changeNameForm, 'name', 'required')">
+        {{ FIELD_REQUIRED }}
+    </span>
+
+    <span
+      class="error-msg"
+      *ngIf="validationService.checkValidations(changeNameForm, 'name', 'validation')">
+        {{ DECK_INVALID_NAME }}
+    </span>
+
+    <rec-loader *ngIf="isLoading"></rec-loader>
+
+    <rec-cards-list [cardsList]="deckCards"></rec-cards-list>
+  </section>
+</section>

@@ -1,0 +1,50 @@
+@import '../../../../assets/styles/variables.scss';
+
+.error-page {
+  display: flex;
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    color: $color-primary-contrast;
+
+    .title {
+      @include title;
+      font-size: 6rem;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .subtitle {
+      @include title;
+      text-align: left;
+    }
+
+    .error-info {
+      font-size: 1.8rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .image-wrapper {
+    .error-image {
+      width: 40vw;
+    }
+  }
+
+  @media (max-width: $w-tablet) {
+    flex-direction: column-reverse;
+
+    .image-wrapper {
+      margin-bottom: 1rem;
+
+      .error-image {
+        width: 80vw;
+      }
+    }
+  }
+}

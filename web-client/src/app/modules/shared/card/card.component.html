@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-frame"></div>
+
+  <div class="card-image">
+    <img [src]="cardInformation.imageUrl" width="200">
+  </div>
+
+  <div class="card-data">
+    <h2 class="card-rarity">{{ cardInformation.rarity }}</h2>
+
+    <div class="card-power">
+        <h2 class="defence">{{ cardInformation.defence }}</h2>
+
+        <h2 class="attack">{{ cardInformation.attack }}</h2>
+    </div>
+
+    <div class="card-details">
+      <h1 class="card-name">{{ cardInformation.name }}</h1>
+
+      <p class="card-description">
+        {{ cardInformation.description }}
+      </p>
+    </div>
+  </div>
+</div>

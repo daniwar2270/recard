@@ -1,0 +1,36 @@
+<div
+  *ngIf="modalService.data"
+  class="message_wrapper"
+  [ngClass]="modalService.data.type?.toString()"
+  [@openClose]="modalService.data && modalService.data.show ? 'open' : 'closed'">
+
+  <div class="close-btn-wrapper">
+    <span class="material-symbols-outlined" (click)="closeModal()">
+      close
+    </span>
+  </div>
+
+  <div class="message">
+    <span *ngIf="modalService.data.type === ModalTypes.error" class="material-symbols-outlined">
+      error
+    </span>
+
+    <span *ngIf="modalService.data.type === ModalTypes.success" class="material-symbols-outlined">
+      check_circle
+    </span>
+
+    <div>
+      <div class="message__content">
+        <h5 class="message__title">
+          {{ modalService.data.title }}
+        </h5>
+
+        <div class="message__text">
+          {{ modalService.data.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message__progress-bar" [style.width.%]="modalService.data.progressWidth"></div>
+</div>

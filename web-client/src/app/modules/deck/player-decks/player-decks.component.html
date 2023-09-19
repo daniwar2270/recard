@@ -1,0 +1,32 @@
+<section
+  *ngIf="!selectedDeck"
+  class="player-decks"
+  recScrollTracker
+  (scrolledDown)="filterService.loadNextItems(getDecks.bind(this))">
+
+  <h1 class="page-title">Decks</h1>
+
+  <section class="decks-wrapper">
+    <rec-loader *ngIf="isLoading"></rec-loader>
+
+    <section
+      class="deck"
+      *ngFor="let deck of filterService.itemList"
+      (click)="selectDeck(deck)">
+
+      <div class="deck-image">
+        <img [src]="CARD_BACK_PATH">
+      </div>
+
+      <h2 class="deck-name">{{ deck.name }}</h2>
+    </section>
+
+    <rec-loader *ngIf="isLoading"></rec-loader>
+  </section>
+</section>
+
+<rec-deck
+  *ngIf="selectedDeck"
+  (resetSelectedDeck)="resetSelectedDeck()"
+  [deck]="selectedDeck">
+</rec-deck>

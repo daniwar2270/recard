@@ -1,0 +1,73 @@
+@import '../../../../assets/styles/variables.scss';
+
+.deck-data {
+  .go-back-btn {
+    background: none;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    color: $color-primary-contrast;
+  }
+
+  .error-msg {
+    color: $color-error;
+  }
+
+  .input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-primary-contrast;
+    margin-bottom: 0.4rem;
+
+    .deck-name {
+      width: 100%;
+      margin-bottom: 0;
+      font-size: 1.8rem;
+      background: none;
+      color: $color-primary-contrast;
+      text-align: center;
+      cursor: auto;
+
+      &.edit-mode {
+        @include input-field;
+        margin: 0;
+      }
+
+      &.readonly {
+        border: none;
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+
+    .material-symbols-outlined {
+      display: inline-block;
+      color: $color-primary-contrast;
+      position: relative;
+      right: 2rem;
+      width: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.save {
+        color: $color-success;
+        font-weight: 700;
+        right: 4rem;
+        font-size: 2rem;
+      }
+
+      &.close {
+        font-weight: 400;
+        color: $color-field-accent;
+      }
+    }
+  }
+}

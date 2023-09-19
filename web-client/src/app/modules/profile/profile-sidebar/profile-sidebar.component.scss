@@ -1,0 +1,82 @@
+@import '../../../../assets/styles/variables';
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.4rem;
+
+  &__avatar {
+    cursor: pointer;
+    margin: 2rem;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    border: $color-primary-contrast 0.12rem solid;
+    background: $color-avatar;
+
+    .image-upload-field {
+      display: none;
+    }
+
+    &:hover {
+      filter: grayscale(100%);
+      transform: scale(1.05);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+    .buttons-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 10rem;
+      margin-bottom: 1rem;
+
+      .btn {
+        @include form-btn;
+        box-shadow: none;
+        color: $color-primary-contrast;
+
+        &.cancel {
+          background-color: $color-error;
+        }
+
+        &.save {
+          background-color: $color-success;
+        }
+      }
+    }
+
+    .sections {
+      width: 100%;
+      border-top: solid 0.02rem $color-primary-contrast;
+
+      .section {
+        width: 100%;
+        padding: 0.8rem;
+        font-weight: 400;
+        text-align: start;
+        color: $color-primary-contrast;
+        background: transparent;
+        border: none;
+        border-bottom: solid 0.02rem $color-primary-contrast;
+        transition: background 0.4s;
+
+        &:hover, &.selected {
+          background: lighten($color-primary, 10%);
+          cursor: pointer;
+        }
+
+        &:active, &.selected:active {
+          background: lighten($color-primary, 12%);
+        }
+      }
+    }
+  }

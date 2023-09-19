@@ -1,0 +1,85 @@
+<header>
+  <button class="menu-btn" (click)="setOpenNav(!isNavOpen)">
+    <span class="material-symbols-outlined">
+      menu
+    </span>
+  </button>
+
+  <nav [class]="'nav ' + navHiddenClass">
+    <ul class="nav__auth nav__list" *ngIf="this.isAuth">
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.GAME_CARDS"
+          routerLinkActive="active">
+            Cards
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.AUCTION"
+          routerLinkActive="active">
+            Auction
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.TEAM"
+          routerLinkActive="active">
+            Team
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.RANKINGS"
+          routerLinkActive="active">
+           Rankings
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.DUELS"
+          routerLinkActive="active">
+            Duels
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.PROFILE"
+          routerLinkActive="active">
+            Profile
+        </a>
+      </li>
+    </ul>
+
+    <button *ngIf="this.isAuth" class="logout-btn" (click)="this.logout()">
+          <span class="material-symbols-outlined">
+            logout
+          </span>
+    </button>
+
+    <ul class="nav__not-auth nav__list" *ngIf="!this.isAuth">
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.LOGIN"
+          routerLinkActive="active">
+            Login
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          [routerLink]="AppNavigation.REGISTER"
+          routerLinkActive="active">
+            Register
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

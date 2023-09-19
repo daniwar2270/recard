@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+$color-primary: #001845;
+$color-primary-transparent: rgba(0, 24, 69, 0.84);
+$color-shadow-card: #76ACE0;
+$color-shadow-modal: rgba(50, 121, 184, 1);
+$color-primary-contrast: #FFFFFF;
+$color-error: #FF5757;
+$color-success: #3BAB35;
+$color-mask-dark: rgba(0, 0, 0, 0.36);
+$color-secondary: #D4AF37;
+$color-footer-header: #2B2334;
+$color-avatar: #CCCCCC;
+$color-field-accent: #9D9D9D;
+
+$main-font: 'Josefin Sans', sans-serif;
+$title-font: 'Inconsolata', sans-serif;
+$edit-font: 'Leelawadee UI', sans-serif;
+$card-font: 'Eagle Lake', cursive;
+
+$w-mobile-s: 320px;
+$w-mobile-m: 375px;
+$w-mobile-l: 425px;
+$w-tablet: 768px;
+$w-laptop: 1024px;
+$w-laptop-l: 1440px;
+
+$card-font-color-contrast: #FFEBE6;
+$card-font-color-primary: #070707;
+
+$border-radius: 0.6rem;
+$card-width: 22rem;
+$card-height: 34rem;
+
+@mixin shadow-dark-bg {
+  -webkit-box-shadow: 0 0 1rem 0.2rem $color-shadow-modal;
+  -moz-box-shadow: 0 0 1rem 0.2rem $color-shadow-modal;
+  box-shadow: 0 0 1rem 0.2rem $color-shadow-modal;
+}
+
+@mixin input-field {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  height: 2.2rem;
+  padding: 0.26rem 0.6rem;
+  border-radius: 0.2rem;
+  background: transparent;
+  color: $color-primary-contrast;
+  border: $color-primary-contrast 0.08rem solid;
+
+  &::placeholder {
+    color: $color-primary-contrast;
+    text-transform: capitalize;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0.26rem 0.08rem white;
+  }
+
+  @media (max-height: $w-tablet), (max-width: $w-mobile-l) {
+    font-size: 1rem;
+    height: 2rem;
+  }
+}
+
+@mixin form-btn {
+  font-size: 1.2rem;
+  height: 2.4rem;
+  padding: 0.26rem 0.6rem;
+  border-radius: 0.2rem;
+  background-color: $color-secondary;
+  border: none;
+  box-shadow: 0 0 0.2rem 0.2rem #565453;
+  font-weight: 400;
+  color: $color-primary;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+
+  &:enabled:hover {
+    cursor: pointer;
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background-color: gray;
+    color: $color-primary-contrast;
+    box-shadow: none;
+    cursor: no-drop;
+  }
+}
+
+@mixin modal-window {
+  background-color: $color-primary-transparent;
+  padding: 2rem;
+  border-radius: 0.4rem;
+}
+
+@mixin pop-up-message($color) {
+  position: absolute;
+  right: 0;
+  top: 2rem;
+  box-sizing: border-box;
+  display: block;
+  width: 18rem;
+  min-height: 4rem;
+  height: auto;
+  margin: 2rem;
+  padding: 1rem;
+  background-color: $color-primary-contrast;
+  border-radius: 0.2rem;
+  color: $color;
+  font-size: 1.2rem;
+  box-shadow: 0 0 1rem 0.2rem $color;
+}
+
+@mixin label {
+  position: relative;
+  display: inline-block;
+  color: $color-primary-contrast;
+  width: fit-content;
+  font-family: $edit-font;
+  font-size: 1.02rem;
+  font-weight: bold;
+  cursor: default;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color-primary-contrast;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.2s ease-out;
+    z-index: 1;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+@mixin title {
+  font-size: 3rem;
+  font-family: $title-font;
+  color: $color-primary-contrast;
+  text-align: center;
+  margin-bottom: 2.2rem;
+
+  @media screen and (max-height: $w-tablet), (max-width: $w-mobile-l) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@mixin loader-full-page {
+  rec-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: $color-mask-dark;
+  }
+}
+
+@mixin scrollbar {
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $color-primary-contrast;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $color-shadow-card;
+    height: 2rem;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color-shadow-modal;
+  }
+}
+
+@mixin card {
+  box-shadow: 0 0 0.5rem 0.5rem $color-shadow-card;
+  border-radius: $border-radius;
+  font-family: $card-font;
+  width: $card-width;
+  height: $card-height;
+}

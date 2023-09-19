@@ -1,0 +1,38 @@
+@import '../../../../assets/styles/variables.scss';
+@include scrollbar;
+
+.player-cards {
+  height: 100%;
+  overflow-y: scroll;
+
+  .filter-btn {
+    background: none;
+    color: $color-primary-contrast;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    border: none;
+    letter-spacing: 0.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .field-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    select {
+      width: 8rem;
+      height: 2rem;
+      padding: 0.4rem;
+      border-radius: 0.2rem;
+      font-size: 1.2rem;
+    }
+  }
+}

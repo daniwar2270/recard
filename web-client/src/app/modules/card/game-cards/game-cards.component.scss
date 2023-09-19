@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/variables.scss';
+
+@include scrollbar;
+
+.cards-page {
+  height: 90%;
+  width: 90%;
+  overflow-y: scroll;
+  margin: 3rem auto;
+  background-color: $color-primary-transparent;
+  @include shadow-dark-bg;
+  border-radius: 0.8rem;
+
+  .filter-btn {
+    background: none;
+    color: $color-primary-contrast;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    border: none;
+    letter-spacing: 0.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .title {
+    color: $color-primary-contrast;
+    @include title;
+    margin: 0.8rem auto;
+  }
+}

@@ -1,0 +1,24 @@
+<rec-loader *ngIf="isLoading"></rec-loader>
+
+<section *ngIf="!isLoading" class="profile-wrapper">
+  <section class="sidebar">
+    <rec-profile-sidebar
+      (selectSectionEvent)="receiveSelectedSection($event)"
+      [profileImage]="profileInformation.imageUrl || this.defaultAvatar"></rec-profile-sidebar>
+  </section>
+
+  <section class="profile">
+    <rec-profile-account
+      *ngIf="selectedSection === ProfileNavigation.ACCOUNT"
+      [profileInformation]="profileInformation">
+    </rec-profile-account>
+
+    <rec-player-cards
+      *ngIf="selectedSection === ProfileNavigation.CARDS">
+    </rec-player-cards>
+
+    <rec-player-decks
+      *ngIf="selectedSection === ProfileNavigation.DECKS">
+    </rec-player-decks>
+  </section>
+</section>

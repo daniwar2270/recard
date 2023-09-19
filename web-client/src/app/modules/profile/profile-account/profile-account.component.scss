@@ -1,0 +1,110 @@
+@import '../../../../assets/styles/variables';
+
+h2 {
+  @include title;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 3rem 0;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .wrapper {
+    width: 46%;
+    height: 3.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem 0;
+
+    h5 {
+      @include label;
+    }
+
+    p {
+      color: white;
+      padding: 0.6rem 0;
+      border-bottom: $color-primary-contrast 0.08rem solid;
+    }
+  }
+
+  @media screen and (max-height: $w-mobile-l) {
+    margin: 0;
+  }
+}
+
+.account-form {
+  width: 100%;
+  height: 32rem;
+
+  input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  .input-wrapper {
+    position: relative;
+    margin: 2rem 0;
+    width: 46%;
+
+    label {
+      @include label;
+    }
+
+    input {
+      @include input-field;
+      width: 100%;
+
+      &::placeholder {
+        color: $color-primary-contrast;
+        text-transform: capitalize;
+      }
+
+      &:focus {
+        outline: none;
+        border-bottom: $color-primary-contrast 0.08rem solid;
+      }
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+  }
+
+  .error-msg {
+    color: $color-error;
+  }
+
+  @media (max-width: $w-mobile-l) {
+    padding: inherit 0.6rem;
+  }
+}
+
+button {
+  @include form-btn;
+  box-shadow: none;
+  color: $color-primary-contrast;
+
+  &:enabled:hover {
+    box-shadow: 0 0 0.6rem 0.2rem rgb(138, 216, 238);
+  }
+
+  &.cancel {
+    background-color: $color-error;
+  }
+
+  &:enabled.save {
+    background-color: $color-success;
+  }
+
+  &.edit {
+    width: 46%;
+  }
+}
